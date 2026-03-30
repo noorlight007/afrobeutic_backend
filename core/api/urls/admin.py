@@ -1,0 +1,123 @@
+from django.urls import path
+
+from ..views.admin import (
+    AdminRegistrationView,
+    AdminUserListView,
+    AdminUserDetailView,
+    AdminAccountListView,
+    AdminAccountDetailView,
+    AdminSalonListView,
+    AdminSalonDetailView,
+    AdminSalonDashboardApiView,
+    AdminAccountEnquiryListView,
+    AdminAccountEnquiryDetailView,
+    AdminCustomerListView,
+    AdminServiceListView,
+    AdminProductListView,
+    AdminEmployeeListView,
+    AdminBookingListView,
+    AdminManagementListView,
+    AdminManagementDetailView,
+    AdminPricingPlanListView,
+    AdminPricingPlanDetailView,
+    AdminSubscriptionListView,
+    AdminSubscriptionDetailView,
+    AdminDashboardApiView,
+)
+
+urlpatterns = [
+    path("/dashboard", AdminDashboardApiView.as_view(), name="admin.dashboard"),
+    path(
+        "/subscriptions/<uuid:subscription_uid>",
+        AdminSubscriptionDetailView.as_view(),
+        name="admin.subscription-detail",
+    ),
+    path(
+        "/subscriptions",
+        AdminSubscriptionListView.as_view(),
+        name="admin.subscription-list",
+    ),
+    path(
+        "/pricing-plans/<uuid:pricing_plan_uid>",
+        AdminPricingPlanDetailView.as_view(),
+        name="admin.pricing-plan-detail",
+    ),
+    path(
+        "/pricing-plans",
+        AdminPricingPlanListView.as_view(),
+        name="admin.pricing-plan-list",
+    ),
+    path(
+        "/accounts/<uuid:account_uid>/salons/<uuid:salon_uid>/bookings",
+        AdminBookingListView.as_view(),
+        name="admin.account-salon-bookings",
+    ),
+    path(
+        "/accounts/<uuid:account_uid>/salons/<uuid:salon_uid>/employees",
+        AdminEmployeeListView.as_view(),
+        name="admin.account-salon-employees",
+    ),
+    path(
+        "/accounts/<uuid:account_uid>/salons/<uuid:salon_uid>/products",
+        AdminProductListView.as_view(),
+        name="admin.account-salon-products",
+    ),
+    path(
+        "/accounts/<uuid:account_uid>/salons/<uuid:salon_uid>/services",
+        AdminServiceListView.as_view(),
+        name="admin.account-salon-services",
+    ),
+    path(
+        "/accounts/<uuid:account_uid>/salons/<uuid:salon_uid>/customers",
+        AdminCustomerListView.as_view(),
+        name="admin.account-salon-customers",
+    ),
+    path(
+        "/accounts/<uuid:account_uid>/salons/<uuid:salon_uid>/dashboard",
+        AdminSalonDashboardApiView.as_view(),
+        name="admin.account-salon-dashboard",
+    ),
+    path(
+        "/accounts/<uuid:account_uid>/salons/<uuid:salon_uid>",
+        AdminSalonDetailView.as_view(),
+        name="admin.account-salon-detail",
+    ),
+    path(
+        "/accounts/<uuid:account_uid>/salons",
+        AdminSalonListView.as_view(),
+        name="admin.account-salons",
+    ),
+    path(
+        "/accounts/<uuid:account_uid>/enquiries/<uuid:account_enquiry_uid>",
+        AdminAccountEnquiryDetailView.as_view(),
+        name="admin.account-enquiry-detail",
+    ),
+    path(
+        "/accounts/<uuid:account_uid>/enquiries",
+        AdminAccountEnquiryListView.as_view(),
+        name="admin.account-enquiry-list",
+    ),
+    path(
+        "/accounts/<uuid:account_uid>",
+        AdminAccountDetailView.as_view(),
+        name="admin.account-detail",
+    ),
+    path("/accounts", AdminAccountListView.as_view(), name="admin.accounts"),
+    path(
+        "/users/<uuid:user_uid>",
+        AdminUserDetailView.as_view(),
+        name="admin.user-detail",
+    ),
+    path("/users", AdminUserListView.as_view(), name="admin.users"),
+    path(
+        "/managements/<uuid:management_uid>",
+        AdminManagementDetailView.as_view(),
+        name="admin.management-detail",
+    ),
+    path("/managements", AdminManagementListView.as_view(), name="admin.management"),
+    path(
+        "/managements-register",
+        AdminRegistrationView.as_view(),
+        name="auth.admin-register",
+    ),
+]
