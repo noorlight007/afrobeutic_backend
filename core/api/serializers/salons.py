@@ -273,6 +273,7 @@ class SalonServiceSerializer(serializers.ModelSerializer):
             "assign_employees",
             "created_at",
             "updated_at",
+            "tags"
         ]
 
     def validate_uploaded_images(self, value):
