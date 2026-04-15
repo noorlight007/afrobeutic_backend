@@ -573,12 +573,12 @@ class SalonBookingCalendarListView(ListAPIView):
             target_date = datetime.now().date()
 
         allowed_statuses = [
-            BookingStatus.PLACED,
+            BookingStatus.CONFIRMED,
             BookingStatus.INPROGRESS,
             BookingStatus.RESCHEDULED,
             BookingStatus.COMPLETED,
             BookingStatus.CANCELLED,
-            BookingStatus.ABSENT,
+            BookingStatus.NO_SHOW,
         ]
 
         # If status is invalid, ignore it (don’t filter by status)
