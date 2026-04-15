@@ -1,39 +1,38 @@
 from datetime import timedelta
-from django.contrib.gis.db import models as gis_models
-from django.core.validators import MinValueValidator, MaxValueValidator
-from django.db import models
-from django.contrib.auth import get_user_model
-from django.utils import timezone
-
-from django_countries.fields import CountryField
-from phonenumber_field.modelfields import PhoneNumberField
-from multiselectfield import MultiSelectField
+from decimal import ROUND_HALF_UP, Decimal
 
 from common.models import BaseModel, Category
+from django.contrib.auth import get_user_model
+from django.contrib.gis.db import models as gis_models
+from django.contrib.postgres.fields import ArrayField
+from django.db import models
+from django.utils import timezone
+from django_countries.fields import CountryField
+from multiselectfield import MultiSelectField
+from phonenumber_field.modelfields import PhoneNumberField
 
 from apps.authentication.models import Account
-from decimal import Decimal, ROUND_HALF_UP
 
 from .choices import (
-    SalonCategory,
-    SalonType,
-    SalonStatus,
-    DaysOfWeek,
+    AdditionalServiceType,
+    BookingPaymentType,
+    BookingSource,
     BookingStatus,
+    BridalMakeupServiceType,
     ChairStatus,
     CustomerType,
-    BookingPaymentType,
+    DaysOfWeek,
     HairServiceType,
-    BridalMakeupServiceType,
-    AdditionalServiceType,
-    ServiceCategoryType,
     ProductCategoryType,
-    BookingSource,
+    SalonCategory,
+    SalonStatus,
+    SalonType,
+    ServiceCategoryType,
 )
 from .utils import (
-    get_salon_media_path,
-    get_salon_logo_path,
     get_salon_employee_image_path,
+    get_salon_logo_path,
+    get_salon_media_path,
     unique_booking_id_generator,
     validate_available_time_slots,
 )
@@ -216,6 +215,11 @@ class Service(BaseModel):
     assign_employees = models.ManyToManyField(
         "Employee", related_name="employee_services", blank=True
     )
+    tags = ArrayField(
+        models.CharField(max_length=255),
+        blank=True,
+        default=list,
+    )
 
     def final_price(self):
 
@@ -372,7 +376,7 @@ class Booking(BaseModel):
     status = models.CharField(
         max_length=15,
         choices=BookingStatus.choices,
-        default=BookingStatus.PLACED,
+        default=BookingStatus.CONFIRMED,
         db_index=True,
     )
     notes = models.TextField(blank=True, null=True)

@@ -4,8 +4,9 @@ from django.utils.translation import gettext_lazy as _
 
 class SalonCategory(models.TextChoices):
     GENERAL_SALON = "GENERAL_SALON", _("General Salon")
-    MOBILE_OR_HOME_SERVICE_SALON = "MOBILE_OR_HOME_SERVICE_SALON", _(
-        "Mobile or Home Service Salon"
+    MOBILE_OR_HOME_SERVICE_SALON = (
+        "MOBILE_OR_HOME_SERVICE_SALON",
+        _("Mobile or Home Service Salon"),
     )
     OCCASIONALLY_BOTH = "OCCASIONALLY_BOTH", _("Occasionally Both")
 
@@ -26,19 +27,23 @@ class HairServiceType(models.TextChoices):
 
 class BridalMakeupServiceType(models.TextChoices):
     BRIDAL_MAKEUP = "BRIDAL_MAKEUP", _("Bridal Makeup")
-    ENGAGEMENT_PRE_WEDDING_MAKEUP = "ENGAGEMENT_PRE_WEDDING_MAKEUP", _(
-        "Engagement / pre-wedding makeup"
+    ENGAGEMENT_PRE_WEDDING_MAKEUP = (
+        "ENGAGEMENT_PRE_WEDDING_MAKEUP",
+        _("Engagement / pre-wedding makeup"),
     )
     PARTY_EVENING_MAKEUP = "PARTY_EVENING_MAKEUP", _("Party / evening makeup")
-    PHOTOSHOOT_EDITORIAL_MAKEUP = "PHOTOSHOOT_EDITORIAL_MAKEUP", _(
-        "Photoshoot / editorial makeup"
+    PHOTOSHOOT_EDITORIAL_MAKEUP = (
+        "PHOTOSHOOT_EDITORIAL_MAKEUP",
+        _("Photoshoot / editorial makeup"),
     )
-    TRADITIONAL_CULTURAL_BRIDAL_MAKEUP = "TRADITIONAL_CULTURAL_BRIDAL_MAKEUP", _(
-        "Traditional / cultural bridal makeup"
+    TRADITIONAL_CULTURAL_BRIDAL_MAKEUP = (
+        "TRADITIONAL_CULTURAL_BRIDAL_MAKEUP",
+        _("Traditional / cultural bridal makeup"),
     )
     HD_AIRBRUSH_MAKEUP = "HD_AIRBRUSH_MAKEUP", _("HD / airbrush makeup")
-    HAIR_STYLING_FOR_BRIDAL_CLIENTS = "HAIR_STYLING_FOR_BRIDAL_CLIENTS", _(
-        "Hair styling for bridal clients"
+    HAIR_STYLING_FOR_BRIDAL_CLIENTS = (
+        "HAIR_STYLING_FOR_BRIDAL_CLIENTS",
+        _("Hair styling for bridal clients"),
     )
     GROOM_MAKEUP_GROOMING = "GROOM_MAKEUP_GROOMING", _("Groom makeup / grooming")
     NOT_SURE = "NOT_SURE", _("Not sure")
@@ -57,21 +62,20 @@ class SalonStatus(models.TextChoices):
 
 
 class ServiceCategoryType(models.TextChoices):
-    HAIR_SERVICES = "HAIR_SERVICES", _("Hair Services")
-    HAIR_REMOVAL_SERVICES = "HAIR_REMOVAL_SERVICES", _("Hair Removal Services")
-    BRIDAL_AND_MAKEUP_SERVICES = "BRIDAL_AND_MAKEUP_SERVICES", _(
-        "Bridal and Makeup Services"
+    HAIR = "HAIR", _("Hair")
+    BEAUTY_AND_MAKEUP = "BEAUTY_AND_MAKEUP", _("Beauty & makeup")
+    SKIN_AND_FACIAL = (
+        "SKIN_AND_FACIAL",
+        _("Skin & Facial"),
     )
-    MENS_GROOMING_SERVICES = "MENS_GROOMING_SERVICES", _("Men's Grooming Services")
-    SKIN_OR_FACIAL_SERVICES = "SKIN_OR_FACIAL_SERVICES", _("Skin or Facial Services")
-    NAIL_SERVICES = "NAIL_SERVICES", _("Nail Services")
-    MESSAGE_AND_BODY_SERVICES = "MESSAGE_AND_BODY_SERVICES", _(
-        "Massage and Body Services"
+    NAILS = "NAILS", _("Nails")
+    MENS_GROOMING = "MENS_GROOMING", _("Mens Grooming")
+    BODY_AND_MASSAGE = "BODY_AND_MASSAGE", _("Body & Massage")
+    HAIR_REMOVAL = (
+        "HAIR_REMOVAL",
+        _("Hair Removal"),
     )
-    EYEBROW_AND_EYELASH_SERVICES = "EYEBROW_AND_EYELASH_SERVICES", _(
-        "Eyebrow and Eyelash Services"
-    )
-    OTHER_SERVICES = "OTHER_SERVICES", _("Other Services")
+    OTHER = "OTHER", _("Other")
 
 
 class ServiceTimeSlot(models.TextChoices):
@@ -83,17 +87,13 @@ class ServiceTimeSlot(models.TextChoices):
 
 
 class ProductCategoryType(models.TextChoices):
-    HAIR_CARE_PRODUCTS = "HAIR_CARE_PRODUCTS", _("Hair Care Products")
-    SKIN_CARE_PRODUCTS = "SKIN_CARE_PRODUCTS", _("Skin Care Products")
-    MAKEUP_PRODUCTS = "MAKEUP_PRODUCTS", _("Makeup Products")
-    NAIL_CARE_PRODUCTS = "NAIL_CARE_PRODUCTS", _("Nail Care Products")
-    MENS_GROOMING_PRODUCTS = "MENS_GROOMING_PRODUCTS", _("Men's Grooming Products")
-    BODY_CARE_PRODUCTS = "BODY_CARE_PRODUCTS", _("Body Care Products")
-    HAIR_REMOVAL_PRODUCTS = "HAIR_REMOVAL_PRODUCTS", _("Hair Removal Products")
-    TOOLS_AND_ACCESSORIES = "TOOLS_AND_ACCESSORIES", _("Tools & Accessories")
-    SALON_RETAIL_AND_GIFT_PRODUCTS = "SALON_RETAIL_AND_GIFT_PRODUCTS", _(
-        "Salon Retail & Gift Products"
-    )
+    HAIR_PRODUCTS = "HAIR_PRODUCTS", _("Hair Products")
+    HAIR_EXTENSIONS_AND_WIGS = "HAIR_EXTENSIONS_AND_WIGS", _("Hair Extensions & Wigs")
+    HAIR_ACCESSORIES = "HAIR_ACCESSORIES", _("Hair Accessories")
+    SKIN_AND_BEAUTY = "SKIN_AND_BEAUTY", _("Skin & Beauty")
+    NAILS = "NAILS", _("Nails")
+    MENS_GROOMING = "MENS_GROOMING", _("Men's Grooming")
+    RETAIL_AND_GIFTS = "RETAIL_AND_GIFTS", _("Retail & Gifts")
     OTHER_PRODUCTS = "OTHER_PRODUCTS", _("Other Products")
 
 
@@ -111,12 +111,12 @@ class DaysOfWeek(models.TextChoices):
 
 
 class BookingStatus(models.TextChoices):
-    PLACED = "PLACED", _("Placed")
+    CONFIRMED = "CONFIRMED", _("Confirmed")
     INPROGRESS = "INPROGRESS", _("In-progress")
     COMPLETED = "COMPLETED", _("Completed")
     RESCHEDULED = "RESCHEDULED", _("Rescheduled")
     CANCELLED = "CANCELLED", _("Cancelled")
-    ABSENT = "ABSENT", _("Absent")
+    NO_SHOW = "NO_SHOW", _("No-Show")
 
 
 class ChairStatus(models.TextChoices):
